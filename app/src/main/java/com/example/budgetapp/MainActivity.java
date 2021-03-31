@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                                 count -= Integer.parseInt(items.get(position).get("Line2"));
                                 total -= Integer.parseInt(items.get(position).get("Line3"))*Integer.parseInt(items.get(position).get("Line2"));
                                 toolbar.setTitle("Total amount = Rs. " + total);
-                                toolbar.setSubtitle(count + " items");
+                                toolbar.setSubtitle(count + " item(s)");
                                 items.remove(position);
                                 simpleAdapter.notifyDataSetChanged();
                             }
@@ -65,13 +65,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-
-
     public void add(View view) {
 
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.manual_entry_dialog);
+
         Button addBudget = dialog.findViewById(R.id.addBudget);
         TextInputLayout nameLayout = dialog.findViewById(R.id.filledName);
         EditText nameText = dialog.findViewById(R.id.nameText);
@@ -79,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         EditText qtyText = dialog.findViewById(R.id.qtyText);
         TextInputLayout priceLayout = dialog.findViewById(R.id.filledPrice);
         EditText priceText = dialog.findViewById(R.id.priceText);
+
         addBudget.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                     total += Integer.parseInt(priceText.getText().toString())*Integer.parseInt(qtyText.getText().toString());
                     simpleAdapter.notifyDataSetChanged();
                     toolbar.setTitle("Total amount = Rs. " +  total);
-                    toolbar.setSubtitle(count + " items");
+                    toolbar.setSubtitle(count + " item(s)");
                 }
             }
         });
